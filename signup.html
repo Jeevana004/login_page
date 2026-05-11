@@ -1,148 +1,436 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful Signup Page</title>
+
+    <title>Mother Theresa Hostel Signup</title>
 
     <style>
 
-        body{
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        .signup-box{
-            width: 400px;
-            background-color: white;
-            padding: 40px;
-            margin: 50px auto;
-            border-radius: 15px;
-            box-shadow: 0px 0px 20px gray;
+        body{
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#f4f7fb;
+            padding:30px;
         }
 
-        h1{
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
+        .signup-container{
+            width:450px;
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0px 0px 25px rgba(0,0,0,0.15);
         }
 
-        label{
-            font-size: 18px;
-            font-weight: bold;
-            color: #444;
+        .signup-container h1{
+            text-align:center;
+            color:#2c3e50;
+            margin-bottom:10px;
+            font-size:38px;
         }
 
-        input{
-            width: 100%;
-            height: 40px;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            border: 1px solid gray;
-            border-radius: 8px;
-            padding-left: 10px;
-            font-size: 16px;
+        .signup-container p{
+            text-align:center;
+            color:gray;
+            margin-bottom:30px;
+            font-size:15px;
         }
 
-        button{
-            width: 100%;
-            height: 45px;
-            background-color: #4A90E2;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
+        .input-group{
+            margin-bottom:20px;
         }
 
-        button:hover{
-            background-color: #357ABD;
+        .input-group label{
+            display:block;
+            margin-bottom:8px;
+            color:#333;
+            font-size:16px;
+            font-weight:bold;
         }
 
-        p{
-            text-align: center;
-            margin-top: 20px;
+        .input-group input{
+            width:100%;
+            padding:14px;
+            border:1px solid #ccc;
+            border-radius:12px;
+            outline:none;
+            font-size:16px;
+            transition:0.3s;
         }
 
-        a{
-            text-decoration: none;
-            color: #4A90E2;
-            font-weight: bold;
+        .input-group input:focus{
+            border-color:#3498db;
+            box-shadow:0px 0px 8px rgba(52,152,219,0.4);
+        }
+
+        .signup-btn{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:12px;
+            background:linear-gradient(to right,#3498db,#2c3e50);
+            color:white;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .signup-btn:hover{
+            transform:scale(1.02);
+            background:linear-gradient(to right,#2980b9,#1f2d3d);
+        }
+
+        .login-link{
+            text-align:center;
+            margin-top:20px;
+            color:#555;
+        }
+
+        .login-link a{
+            text-decoration:none;
+            color:#3498db;
+            font-weight:bold;
+        }
+
+        .login-link a:hover{
+            text-decoration:underline;
+        }
+
+        .error{
+            color:red;
+            font-size:13px;
+            margin-top:5px;
         }
 
     </style>
+
 </head>
 
 <body>
 
-    <div class="signup-box">
+    <div class="signup-container">
 
         <h1>Sign Up</h1>
 
-        <form>
+        <p>Mother Theresa Hostel Management System</p>
 
-            <label>Full Name</label>
+        <form id="signupForm">
 
-            <input 
-                type="text"
-                placeholder="Enter Full Name"
-                pattern="[A-Za-z ]{5,20}"
-                title="Name should contain only alphabets and length must be between 5 to 20 characters"
-                required
-            >
+            <!-- Full Name -->
 
-            <label>Email</label>
+            <div class="input-group">
 
-            <input 
-    type="email"
-    placeholder="Enter Email"
-    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-    title="Please enter a valid email address"
-    required
->
+                <label>Full Name</label>
 
-            <label>Username</label>
+                <input 
+                    type="text"
+                    id="fullname"
+                    placeholder="Enter Full Name"
+                >
 
-            <input 
-                type="text"
-                placeholder="Enter Username"
-                minlength="5"
-                maxlength="15"
-                pattern="[A-Za-z]{5,15}"
-                title="Username should contain only alphabets and length must be between 5 to 15 characters"
-                required
-            >
+                <div class="error" id="fullnameError"></div>
 
-            <label>Password</label>
+            </div>
 
-            <input 
-                type="password"
-                placeholder="Enter Password"
-                minlength="6"
-                title="Password must contain at least 6 characters"
-                required
-            >
+            <!-- Username -->
 
-            <label>Confirm Password</label>
+            <div class="input-group">
 
-            <input 
-                type="password"
-                placeholder="Confirm Password"
-                required
-            >
+                <label>Username</label>
 
-            <button type="submit">Sign Up</button>
+                <input 
+                    type="text"
+                    id="username"
+                    placeholder="Enter Username"
+                >
+
+                <div class="error" id="usernameError"></div>
+
+            </div>
+
+            <!-- Email -->
+
+            <div class="input-group">
+
+                <label>Email</label>
+
+                <input 
+                    type="email"
+                    id="email"
+                    placeholder="Enter Email"
+                >
+
+                <div class="error" id="emailError"></div>
+
+            </div>
+
+            <!-- Phone -->
+
+            <div class="input-group">
+
+                <label>Phone Number</label>
+
+                <input 
+                    type="text"
+                    id="phone"
+                    placeholder="Enter Phone Number"
+                >
+
+                <div class="error" id="phoneError"></div>
+
+            </div>
+
+            <!-- Password -->
+
+            <div class="input-group">
+
+                <label>Password</label>
+
+                <input 
+                    type="password"
+                    id="password"
+                    placeholder="Enter Password"
+                >
+
+                <div class="error" id="passwordError"></div>
+
+            </div>
+
+            <!-- Confirm Password -->
+
+            <div class="input-group">
+
+                <label>Confirm Password</label>
+
+                <input 
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm Password"
+                >
+
+                <div class="error" id="confirmPasswordError"></div>
+
+            </div>
+
+            <!-- Button -->
+
+            <button type="submit" class="signup-btn">
+
+                Create Account
+
+            </button>
 
         </form>
 
-        <p>
+        <!-- Login Link -->
+
+        <div class="login-link">
+
             Already have an account?
+
             <a href="#">Login</a>
-        </p>
+
+        </div>
 
     </div>
 
+    <!-- JavaScript Validation -->
+
+    <script>
+
+        let form = document.getElementById("signupForm");
+
+        form.addEventListener("submit", function(event){
+
+            event.preventDefault();
+
+            let fullname = document.getElementById("fullname").value.trim();
+
+            let username = document.getElementById("username").value.trim();
+
+            let email = document.getElementById("email").value.trim();
+
+            let phone = document.getElementById("phone").value.trim();
+
+            let password = document.getElementById("password").value.trim();
+
+            let confirmPassword =
+            document.getElementById("confirmPassword").value.trim();
+
+            // Error Elements
+
+            let fullnameError =
+            document.getElementById("fullnameError");
+
+            let usernameError =
+            document.getElementById("usernameError");
+
+            let emailError =
+            document.getElementById("emailError");
+
+            let phoneError =
+            document.getElementById("phoneError");
+
+            let passwordError =
+            document.getElementById("passwordError");
+
+            let confirmPasswordError =
+            document.getElementById("confirmPasswordError");
+
+            // Clear Errors
+
+            fullnameError.innerHTML = "";
+
+            usernameError.innerHTML = "";
+
+            emailError.innerHTML = "";
+
+            phoneError.innerHTML = "";
+
+            passwordError.innerHTML = "";
+
+            confirmPasswordError.innerHTML = "";
+
+            let valid = true;
+
+            // FULL NAME VALIDATION
+
+            if(!/^[A-Za-z ]{5,20}$/.test(fullname)){
+
+                fullnameError.innerHTML =
+                "Full name must contain only alphabets (5-20 characters)";
+
+                valid = false;
+            }
+
+            // USERNAME VALIDATION
+
+            if(username.length < 5){
+
+                usernameError.innerHTML =
+                "Username must contain minimum 5 characters";
+
+                valid = false;
+            }
+
+            else if(username.length > 15){
+
+                usernameError.innerHTML =
+                "Username must contain maximum 15 characters";
+
+                valid = false;
+            }
+
+            else if(!/^[A-Za-z]+$/.test(username)){
+
+                usernameError.innerHTML =
+                "Username should contain only alphabets";
+
+                valid = false;
+            }
+
+            // EMAIL VALIDATION
+
+            let emailPattern =
+            /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
+            if(!emailPattern.test(email)){
+
+                emailError.innerHTML =
+                "Please enter a valid email address";
+
+                valid = false;
+            }
+
+            // PHONE VALIDATION
+
+            if(!/^[0-9]{10}$/.test(phone)){
+
+                phoneError.innerHTML =
+                "Phone number must contain exactly 10 digits";
+
+                valid = false;
+            }
+
+            // PASSWORD VALIDATION
+
+            if(password.length < 8){
+
+                passwordError.innerHTML =
+                "Password must contain minimum 8 characters";
+
+                valid = false;
+            }
+
+            else if(!/[A-Z]/.test(password)){
+
+                passwordError.innerHTML =
+                "Password must contain one uppercase letter";
+
+                valid = false;
+            }
+
+            else if(!/[a-z]/.test(password)){
+
+                passwordError.innerHTML =
+                "Password must contain one lowercase letter";
+
+                valid = false;
+            }
+
+            else if(!/[0-9]/.test(password)){
+
+                passwordError.innerHTML =
+                "Password must contain one number";
+
+                valid = false;
+            }
+
+            else if(!/[!@#$%^&*]/.test(password)){
+
+                passwordError.innerHTML =
+                "Password must contain one special character";
+
+                valid = false;
+            }
+
+            // CONFIRM PASSWORD
+
+            if(password !== confirmPassword){
+
+                confirmPasswordError.innerHTML =
+                "Passwords do not match";
+
+                valid = false;
+            }
+
+            // SUCCESS
+
+            if(valid){
+
+                alert("Signup Successful!");
+
+                form.reset();
+            }
+
+        });
+
+    </script>
+
 </body>
+
 </html>

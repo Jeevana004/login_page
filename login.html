@@ -1,129 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful Login Page</title>
+
+    <title>Mother Theresa Hostel Login</title>
 
     <style>
 
-        body{
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        .login-box{
-            width: 350px;
-            background-color: white;
-            padding: 40px;
-            margin: 100px auto;
-            border-radius: 15px;
-            box-shadow: 0px 0px 20px gray;
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:#f4f7fb;
+            padding:20px;
         }
 
-        h1{
-            text-align: center;
-            color: #333;
-            margin-bottom: 30px;
+        .login-container{
+            width:420px;
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0px 0px 25px rgba(0,0,0,0.15);
         }
 
-        label{
-            font-size: 18px;
-            font-weight: bold;
-            color: #444;
+        .login-container h1{
+            text-align:center;
+            color:#2c3e50;
+            margin-bottom:10px;
+            font-size:38px;
         }
 
-        input[type="text"],
-        input[type="password"]{
-            width: 100%;
-            height: 40px;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            border: 1px solid gray;
-            border-radius: 8px;
-            padding-left: 10px;
-            font-size: 16px;
+        .login-container p{
+            text-align:center;
+            color:gray;
+            margin-bottom:30px;
+            font-size:15px;
         }
 
-        .remember{
-            margin-bottom: 20px;
+        .input-group{
+            margin-bottom:22px;
         }
 
-        button{
-            width: 100%;
-            height: 45px;
-            background-color: #4A90E2;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
+        .input-group label{
+            display:block;
+            margin-bottom:8px;
+            color:#333;
+            font-size:16px;
+            font-weight:bold;
         }
 
-        button:hover{
-            background-color: #357ABD;
+        .input-group input{
+            width:100%;
+            padding:14px;
+            border:1px solid #ccc;
+            border-radius:12px;
+            outline:none;
+            font-size:16px;
+            transition:0.3s;
         }
 
-        p{
-            text-align: center;
-            margin-top: 20px;
+        .input-group input:focus{
+            border-color:#3498db;
+            box-shadow:0px 0px 8px rgba(52,152,219,0.4);
         }
 
-        a{
-            text-decoration: none;
-            color: #4A90E2;
-            font-weight: bold;
+        .remember-forgot{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:25px;
+            font-size:14px;
+            color:#555;
+        }
+
+        .remember-forgot a{
+            color:#3498db;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        .remember-forgot a:hover{
+            text-decoration:underline;
+        }
+
+        .login-btn{
+            width:100%;
+            padding:15px;
+            border:none;
+            border-radius:12px;
+            background:linear-gradient(to right,#3498db,#2c3e50);
+            color:white;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        .login-btn:hover{
+            transform:scale(1.02);
+            background:linear-gradient(to right,#2980b9,#1f2d3d);
+        }
+
+        .signup-link{
+            text-align:center;
+            margin-top:25px;
+            color:#555;
+        }
+
+        .signup-link a{
+            color:#3498db;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        .signup-link a:hover{
+            text-decoration:underline;
+        }
+
+        .error{
+            color:red;
+            font-size:13px;
+            margin-top:6px;
         }
 
     </style>
+
 </head>
 
 <body>
 
-    <div class="login-box">
+    <div class="login-container">
 
-        <h1>Login</h1>
+        <h1>Hostel Login</h1>
 
-        <form>
+        <p>Mother Theresa Hostel Management System</p>
 
-            <label>Username</label>
+        <form id="loginForm">
 
-           <input 
-    type="text"
-    placeholder="Enter Username"
-    minlength="5"
-    maxlength="15"
-    pattern="[A-Za-z]{5,15}"
-    title="Username should contain only alphabets and length must be between 5 to 15 characters"
-    required
->
+            <!-- Username -->
 
-            <label>Password</label>
+            <div class="input-group">
 
-            <input 
-                type="password"
-                placeholder="Enter Password"
-                title="Password is required"
-                required
-            >
+                <label>Username</label>
 
-            <div class="remember">
-                <input type="checkbox">
-                <label>Remember me</label>
+                <input 
+                    type="text"
+                    id="username"
+                    placeholder="Enter Username"
+                >
+
+                <div class="error" id="usernameError"></div>
+
             </div>
 
-            <button type="submit">Login</button>
+            <!-- Password -->
+
+            <div class="input-group">
+
+                <label>Password</label>
+
+                <input 
+                    type="password"
+                    id="password"
+                    placeholder="Enter Password"
+                >
+
+                <div class="error" id="passwordError"></div>
+
+            </div>
+
+            <!-- Remember Me -->
+
+            <div class="remember-forgot">
+
+                <div>
+                    <input type="checkbox">
+                    Remember Me
+                </div>
+
+                <a href="#">Forgot Password?</a>
+
+            </div>
+
+            <!-- Login Button -->
+
+            <button type="submit" class="login-btn">
+
+                Login
+
+            </button>
 
         </form>
 
-        <p>
+        <!-- Signup Link -->
+
+        <div class="signup-link">
+
             Don't have an account?
-            <a href="#">Sign Up</a>
-        </p>
+
+            <a href="#">Signup</a>
+
+        </div>
 
     </div>
 
+    <!-- JavaScript Validation -->
+
+    <script>
+
+        let form = document.getElementById("loginForm");
+
+        form.addEventListener("submit", function(event){
+
+            event.preventDefault();
+
+            let username =
+            document.getElementById("username").value.trim();
+
+            let password =
+            document.getElementById("password").value.trim();
+
+            let usernameError =
+            document.getElementById("usernameError");
+
+            let passwordError =
+            document.getElementById("passwordError");
+
+            usernameError.innerHTML = "";
+
+            passwordError.innerHTML = "";
+
+            let valid = true;
+
+            // USERNAME VALIDATION
+
+            if(username.length < 5){
+
+                usernameError.innerHTML =
+                "Username must contain minimum 5 characters";
+
+                valid = false;
+            }
+
+            else if(username.length > 15){
+
+                usernameError.innerHTML =
+                "Username must contain maximum 15 characters";
+
+                valid = false;
+            }
+
+            else if(!/^[A-Za-z]+$/.test(username)){
+
+                usernameError.innerHTML =
+                "Username should contain only alphabets";
+
+                valid = false;
+            }
+
+            // PASSWORD VALIDATION
+
+            if(password.length < 8){
+
+                passwordError.innerHTML =
+                "Password must contain minimum 8 characters";
+
+                valid = false;
+            }
+
+            else if(!/[A-Z]/.test(password)){
+
+                passwordError.innerHTML =
+                "Password must contain one uppercase letter";
+
+                valid = false;
+            }
+
+            else if(!/[a-z]/.test(password)){
+
+                passwordError.innerHTML =
+                "Password must contain one lowercase letter";
+
+                valid = false;
+            }
+
+            else if(!/[0-9]/.test(password)){
+
+                passwordError.innerHTML =
+                "Password must contain one number";
+
+                valid = false;
+            }
+
+            else if(!/[!@#$%^&*]/.test(password)){
+
+                passwordError.innerHTML =
+                "Password must contain one special character";
+
+                valid = false;
+            }
+
+            // SUCCESS
+
+            if(valid){
+
+                alert("Login Successful!");
+
+                window.location.href = "dashboard.html";
+            }
+
+        });
+
+    </script>
+
 </body>
+
 </html>
