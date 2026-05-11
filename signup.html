@@ -140,6 +140,7 @@
                     type="text"
                     id="fullname"
                     placeholder="Enter Full Name"
+                    title="Full Name should contain only alphabets and length must be between 5 to 15 characters"
                 >
 
                 <div class="error" id="fullnameError"></div>
@@ -156,6 +157,7 @@
                     type="text"
                     id="username"
                     placeholder="Enter Username"
+                    title="Username should contain only alphabets and length must be between 5 to 15 characters"
                 >
 
                 <div class="error" id="usernameError"></div>
@@ -172,13 +174,14 @@
                     type="email"
                     id="email"
                     placeholder="Enter Email"
+                    title="Enter a valid email address"
                 >
 
                 <div class="error" id="emailError"></div>
 
             </div>
 
-            <!-- Phone -->
+            <!-- Phone Number -->
 
             <div class="input-group">
 
@@ -188,6 +191,7 @@
                     type="text"
                     id="phone"
                     placeholder="Enter Phone Number"
+                    title="Phone number should contain exactly 10 digits"
                 >
 
                 <div class="error" id="phoneError"></div>
@@ -204,6 +208,13 @@
                     type="password"
                     id="password"
                     placeholder="Enter Password"
+
+                    title="Password must contain:
+• Minimum 8 characters
+• One uppercase letter
+• One lowercase letter
+• One number
+• One special character (!@#$%^&*)"
                 >
 
                 <div class="error" id="passwordError"></div>
@@ -220,6 +231,7 @@
                     type="password"
                     id="confirmPassword"
                     placeholder="Confirm Password"
+                    title="Confirm password should match the password entered above"
                 >
 
                 <div class="error" id="confirmPasswordError"></div>
@@ -258,20 +270,27 @@
 
             event.preventDefault();
 
-            let fullname = document.getElementById("fullname").value.trim();
+            // INPUT VALUES
 
-            let username = document.getElementById("username").value.trim();
+            let fullname =
+            document.getElementById("fullname").value.trim();
 
-            let email = document.getElementById("email").value.trim();
+            let username =
+            document.getElementById("username").value.trim();
 
-            let phone = document.getElementById("phone").value.trim();
+            let email =
+            document.getElementById("email").value.trim();
 
-            let password = document.getElementById("password").value.trim();
+            let phone =
+            document.getElementById("phone").value.trim();
+
+            let password =
+            document.getElementById("password").value.trim();
 
             let confirmPassword =
             document.getElementById("confirmPassword").value.trim();
 
-            // Error Elements
+            // ERROR ELEMENTS
 
             let fullnameError =
             document.getElementById("fullnameError");
@@ -291,7 +310,7 @@
             let confirmPasswordError =
             document.getElementById("confirmPasswordError");
 
-            // Clear Errors
+            // CLEAR ERRORS
 
             fullnameError.innerHTML = "";
 
@@ -309,36 +328,20 @@
 
             // FULL NAME VALIDATION
 
-            if(!/^[A-Za-z ]{5,20}$/.test(fullname)){
+            if(!/^[A-Za-z ]{5,15}$/.test(fullname)){
 
                 fullnameError.innerHTML =
-                "Full name must contain only alphabets (5-20 characters)";
+                "Full Name must contain only alphabets (5-15 characters)";
 
                 valid = false;
             }
 
             // USERNAME VALIDATION
 
-            if(username.length < 5){
+            if(!/^[A-Za-z]{5,15}$/.test(username)){
 
                 usernameError.innerHTML =
-                "Username must contain minimum 5 characters";
-
-                valid = false;
-            }
-
-            else if(username.length > 15){
-
-                usernameError.innerHTML =
-                "Username must contain maximum 15 characters";
-
-                valid = false;
-            }
-
-            else if(!/^[A-Za-z]+$/.test(username)){
-
-                usernameError.innerHTML =
-                "Username should contain only alphabets";
+                "Username must contain only alphabets (5-15 characters)";
 
                 valid = false;
             }
@@ -346,7 +349,7 @@
             // EMAIL VALIDATION
 
             let emailPattern =
-            /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
 
             if(!emailPattern.test(email)){
 
@@ -379,7 +382,7 @@
             else if(!/[A-Z]/.test(password)){
 
                 passwordError.innerHTML =
-                "Password must contain one uppercase letter";
+                "Password must contain at least one uppercase letter";
 
                 valid = false;
             }
@@ -387,7 +390,7 @@
             else if(!/[a-z]/.test(password)){
 
                 passwordError.innerHTML =
-                "Password must contain one lowercase letter";
+                "Password must contain at least one lowercase letter";
 
                 valid = false;
             }
@@ -395,7 +398,7 @@
             else if(!/[0-9]/.test(password)){
 
                 passwordError.innerHTML =
-                "Password must contain one number";
+                "Password must contain at least one number";
 
                 valid = false;
             }
@@ -403,12 +406,12 @@
             else if(!/[!@#$%^&*]/.test(password)){
 
                 passwordError.innerHTML =
-                "Password must contain one special character";
+                "Password must contain at least one special character";
 
                 valid = false;
             }
 
-            // CONFIRM PASSWORD
+            // CONFIRM PASSWORD VALIDATION
 
             if(password !== confirmPassword){
 
