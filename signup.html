@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Signup Page</title>
+
+    <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .signup-box{
+            width: 400px;
+            background-color: white;
+            padding: 40px;
+            margin: 50px auto;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px gray;
+        }
+
+        h1{
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        label{
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input{
+            width: 100%;
+            height: 40px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid gray;
+            border-radius: 8px;
+            padding-left: 10px;
+            font-size: 16px;
+        }
+
+        button{
+            width: 100%;
+            height: 45px;
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #357ABD;
+        }
+
+        p{
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a{
+            text-decoration: none;
+            color: #4A90E2;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="signup-box">
+
+        <h1>Sign Up</h1>
+
+        <form>
+
+            <label>Full Name</label>
+
+            <input 
+                type="text"
+                placeholder="Enter Full Name"
+                pattern="[A-Za-z ]{5,20}"
+                title="Name should contain only alphabets and length must be between 5 to 20 characters"
+                required
+            >
+
+            <label>Email</label>
+
+            <input 
+    type="email"
+    placeholder="Enter Email"
+    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+    title="Please enter a valid email address"
+    required
+>
+
+            <label>Username</label>
+
+            <input 
+                type="text"
+                placeholder="Enter Username"
+                minlength="5"
+                maxlength="15"
+                pattern="[A-Za-z]{5,15}"
+                title="Username should contain only alphabets and length must be between 5 to 15 characters"
+                required
+            >
+
+            <label>Password</label>
+
+            <input 
+                type="password"
+                placeholder="Enter Password"
+                minlength="6"
+                title="Password must contain at least 6 characters"
+                required
+            >
+
+            <label>Confirm Password</label>
+
+            <input 
+                type="password"
+                placeholder="Confirm Password"
+                required
+            >
+
+            <button type="submit">Sign Up</button>
+
+        </form>
+
+        <p>
+            Already have an account?
+            <a href="#">Login</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
